@@ -202,8 +202,8 @@ if MySys() == "windows"
 elseif MySys() == "linux"
   let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 endif
-set tags=~/acl/tags;
-nnoremap <silent><F8> :!ctags -R --exclude=*.js --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+set tags=./tags;
+nnoremap <silent><F8> :!ctags -R ./<CR>
   
   
 "---------------------------------------------------------------------------------------------------
@@ -231,23 +231,25 @@ if has("cscope")
   set csto=1  
   set cst  
   set nocsverb  
-  
   " add any database in current directory   
-  " if filereadable("cscope.out")  
-  " cs add cscope.out  
-  " endif 
-  " set csverb  
-  " endif 
+  if filereadable("cscope.out")  
+    cs add cscope.out  
+  endif 
+  set csverb  
       
-  nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-  nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-  nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-  nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-  nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-  nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-  nmap <C-@>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
-  nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+  " nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+  " nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+  " nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+  " nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+  " nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+  " nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+  " nmap <C-@>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+  " nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+  
+  nmap <F1> :cs find g <C-R>=expand("<cword>")<CR><CR>
+  nmap <F2> :cs find c <C-R>=expand("<cword>")<CR><CR>
 endif
+nnoremap <silent><F3> :!find ./ -name "*.php" -o -name "*.c">>cscope.files&&cscope -b<CR>
   
   
 "---------------------------------------------------------------------------------------------------
