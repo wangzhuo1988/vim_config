@@ -16,7 +16,7 @@ endfunction
   
 if MySys() == "windows"
   let $VIMFILES = $VIM.'/vimfiles'
-  set backupdir=D://Vim/tmp
+  set backupdir = $VIM.'/tmp'
 elseif MySys() == "linux"
   let $VIMFILES = $HOME.'/.vim'
   set backupdir=/tmp
@@ -34,7 +34,6 @@ endif
 set rtp+=$VIMFILES/bundle/Vundle.vim
   
 " git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" set the runtime path to include Vundle and initialize
 call vundle#begin()
   
 " let Vundle manage Vundle, required
@@ -48,22 +47,19 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'scrooloose/nerdcommenter'
-  
+Plugin 'vim-scripts/winmanager'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-  
-" Optional:
 Plugin 'honza/vim-snippets'
-  
   
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'vim-scripts/cscope.vim'
 Plugin 'vim-scripts/taglist.vim'
   
-" Plugin 'vim-scripts/winmanager'
-" Plugin 'vim-scripts/project.tar.gz'
+"Plugin 'vim-scripts/winmanager'
+"Plugin 'vim-scripts/project.tar.gz'
 
 Plugin 'vimwiki'
   
@@ -142,6 +138,11 @@ nnoremap <leader>2 :set filetype=css<CR>
 nnoremap <leader>3 :set filetype=javascript<CR>
 nnoremap <leader>4 :set filetype=php<CR>
   
+nnoremap co :copen<cr>
+nnoremap cc :cclose<cr>
+
+inoremap <C-F> <right>
+inoremap <C-B> <left>
 
 "---------------------------------------------------------------------------------------------------
 " 折叠配置
@@ -176,14 +177,12 @@ au FileType php setlocal dict+=$VIMFILES/dict/php.dict
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:DoxygenToolkit_paramTag_pre="@Param "
 let g:DoxygenToolkit_returnTag="@return "
-  
 let g:DoxygenToolkit_authorName="wangzhuo<wangzhuo@jindanlicai.com>"
 let g:DoxygenToolkit_briefTag_pre="@desc "
 let g:licenseTag = "http://www.jindanlicai.com"
 let g:doxygen_enhanced_color=1
-  
-map fg : Dox<cr>
-map ffg : DoxAuthor<cr>
+nnoremap fg :Dox<cr>
+nnoremap ffg :DoxAuthor<cr>
   
   
 "---------------------------------------------------------------------------------------------------
@@ -192,7 +191,6 @@ map ffg : DoxAuthor<cr>
 let NERDTreeWinPos="left"
 let NERDTreeWinSize=30
 " let NERDTreeChDirMode=1 " 改变tree目录的同时改变工程的目录
-  
 nnoremap <silent><F6> :NERDTreeToggle<CR>
   
 
@@ -204,7 +202,6 @@ if MySys() == "windows"
 elseif MySys() == "linux"
   let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 endif
-  
 set tags=~/acl/tags;
 nnoremap <silent><F8> :!ctags -R --exclude=*.js --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   
@@ -222,7 +219,6 @@ let Tlist_Hightlight_Tag_On_BufEnter = 1
 let Tlist_Enable_Fold_Column = 0
 let Tlist_Compact_Format = 1
 " let Tlist_Display_Prototype = 0
-  
 nnoremap <silent><F7> :TlistToggle<CR>
   
   
@@ -255,9 +251,27 @@ endif
   
   
 "---------------------------------------------------------------------------------------------------
-" plugin - ctrlp 设置
+" plugin - ctrlp 设置 (搜索文件)
 "---------------------------------------------------------------------------------------------------
-nnoremap <silent> <C-p> :ClearAllCtrlPCache<CR>\|:CtrlP<CR>
+let g:ctrlp_map = ''    "去掉<C-P>绑定
+nnoremap <silent> <F5> :ClearAllCtrlPCache<CR>\|:CtrlP<CR>
+nnoremap ff :CtrlP<CR>
+
+
+"---------------------------------------------------------------------------------------------------
+" plugin - vim-airline 设置 
+"---------------------------------------------------------------------------------------------------
+" let g:airline_theme="luna" 
+" let g:airline_powerline_fonts = 1   
+" 我还省去了minibufexpl插件，因为我习惯在1个Tab下用多个buffer"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+nnoremap <C-N> :bn<CR>
+nnoremap <C-P> :bp<CR>
+" 关闭状态显示空白符号计数,这个对我用处不大"
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#symbol = '!'
+
 
 "---------------------------------------------------------------------------------------------------
 " 每次保存时，自动执行本脚本
