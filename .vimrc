@@ -100,7 +100,12 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 set autoindent 
 set softtabstop=4 " 使得按退格键时可以一次删掉 4 个空格
   
-colorscheme molokai
+" colorscheme molokai
+" colorscheme vividchalk 
+" colorscheme dracula
+" colorscheme codeschool 
+" colorscheme molokai
+colorscheme atom-dark-256
 set t_Co=256
   
 " 配置多语言环境
@@ -203,7 +208,7 @@ elseif MySys() == "linux"
   let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 endif
 set tags=./tags;
-nnoremap <silent><F8> :!ctags -R ./<CR>
+nnoremap <silent><F4> :!ctags -R ./<CR>
   
   
 "---------------------------------------------------------------------------------------------------
