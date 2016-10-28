@@ -99,6 +99,7 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:
 set errorformat=%m\ in\ %f\ on\ line\ %l
 set autoindent 
 set softtabstop=4 " 使得按退格键时可以一次删掉 4 个空格
+set paste 
   
 " colorscheme molokai
 " colorscheme vividchalk 
@@ -148,6 +149,8 @@ nnoremap cc :cclose<cr>
 
 inoremap <C-F> <right>
 inoremap <C-B> <left>
+
+inoremap  <C-u> <ESC>
 
 "---------------------------------------------------------------------------------------------------
 " 折叠配置
@@ -250,7 +253,6 @@ if has("cscope")
   " nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
   " nmap <C-@>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
   " nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-  
   nmap <F1> :cs find g <C-R>=expand("<cword>")<CR><CR>
   nmap <F2> :cs find c <C-R>=expand("<cword>")<CR><CR>
 endif
