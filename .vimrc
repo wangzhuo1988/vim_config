@@ -13,6 +13,7 @@ function! MySys()
     return "linux"
   endif
 endfunction
+
   
 if MySys() == "windows"
   let $VIMFILES = $VIM.'/vimfiles'
@@ -138,7 +139,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-  
+ 
 nnoremap <leader>1 :set filetype=xhtml<CR>
 nnoremap <leader>2 :set filetype=css<CR>
 nnoremap <leader>3 :set filetype=javascript<CR>
@@ -149,7 +150,6 @@ nnoremap cc :cclose<cr>
 
 inoremap <C-F> <right>
 inoremap <C-B> <left>
-
 inoremap  <C-u> <ESC>
 
 "---------------------------------------------------------------------------------------------------
