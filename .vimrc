@@ -53,6 +53,12 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'flazz/vim-colorschemes'
+
+Plugin 'fatih/vim-go'
+Plugin 'dgryski/vim-godef'
+Plugin 'Blackrush/vim-gocode'
+Plugin 'cespare/vim-golang'
   
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'vim-scripts/bufexplorer.zip'
@@ -63,7 +69,7 @@ Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vim-scripts/project.tar.gz'
 
 Plugin 'vimwiki'
-  
+
 call vundle#end()
   
 
@@ -101,13 +107,15 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 set autoindent 
 set softtabstop=4 " 使得按退格键时可以一次删掉 4 个空格
 set paste 
+let g:go_version_warning = 0
   
-" colorscheme molokai
+colorscheme molokai
 " colorscheme vividchalk 
 " colorscheme dracula
 " colorscheme codeschool 
 " colorscheme molokai
-colorscheme atom-dark-256
+" colorscheme atom-dark-256
+" colorscheme solarized
 set t_Co=256
   
 " 配置多语言环境
@@ -198,6 +206,7 @@ nnoremap ffg :DoxAuthor<cr>
 "---------------------------------------------------------------------------------------------------
 let NERDTreeWinPos="left"
 let NERDTreeWinSize=30
+let g:NERDTreeNodeDelimiter = "\u00a0"
 " let NERDTreeChDirMode=1 " 改变tree目录的同时改变工程的目录
 nnoremap <silent><F6> :NERDTreeToggle<CR>
   
