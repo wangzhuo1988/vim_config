@@ -204,10 +204,13 @@ nnoremap ffg :DoxAuthor<cr>
 "---------------------------------------------------------------------------------------------------
 " plugin - NERDTree 配置
 "---------------------------------------------------------------------------------------------------
-let NERDTreeWinPos="left"
-let NERDTreeWinSize=30
-let g:NERDTreeNodeDelimiter = "\u00a0"
-" let NERDTreeChDirMode=1 " 改变tree目录的同时改变工程的目录
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeWinPos='left'
+let g:NERDTreeWinSize=28
+let g:NERDTreeShowLineNumbers=0
+let g:NERDTreeShowHidden=0
+let g:NERDChristmasTree=1
 nnoremap <silent><F6> :NERDTreeToggle<CR>
   
 
